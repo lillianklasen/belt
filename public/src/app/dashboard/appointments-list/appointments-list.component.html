@@ -1,0 +1,30 @@
+<button (click)="logout()">Logout</button>
+
+<h2>Doctor's Appointments</h2>
+
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Patient Name</th>
+        <th>Complaint</th>
+        <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let appointment of appointments; let idx = index">
+        <td>{{ appointment.date | date:'longDate' }}</td>
+        <td>{{ appointment.time }}</td>
+        <td>{{ appointment.user.name }}</td>
+        <td>{{ appointment.complaint }}</td>
+
+        <td>
+            <div *ngIf="appointment.user._id == currentUser._id">
+                <button (click)="destroyAppointment(appointment._id, idx)">Cancel</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+<button [routerLink]="['/new_appointment']">Add a New Appointment</button>

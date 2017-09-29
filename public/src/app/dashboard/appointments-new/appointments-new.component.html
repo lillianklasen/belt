@@ -1,0 +1,40 @@
+<h2>New Appointment</h2>
+
+<form (submit)="createAppointment()">
+    Date:
+    <input
+    type='date'
+    name='date'
+    [(ngModel)]='newAppointment.date'>
+
+    <br>
+    <br>
+
+    Time:
+    <input
+    type='time'
+    name='time'
+    min="08:00"
+    max="17:00"
+    [(ngModel)]='newAppointment.time'>
+
+    <br>
+    <br>
+
+    Complaint:
+    <input
+    type='text'
+    name='complaint'
+    [(ngModel)]='newAppointment.complaint'>
+
+    <br>
+    <br>
+
+    <input type='submit' value='Add Appointment'>
+    <button [routerLink]="['/dashboard']">Cancel</button>
+
+</form>
+
+<div>
+    <p *ngFor="let error of errors">{{ error }}</p>
+</div>
